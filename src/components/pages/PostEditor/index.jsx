@@ -135,7 +135,7 @@ class PostEditor extends Component {
                   <div className={classes.textFieldWrapper}>
                     <TextField
                       id="outlined-multiline-flexible"
-                      label="Multiline"
+                      label="Description editor"
                       multiline
                       rows="22"
                       rowsMax="28"

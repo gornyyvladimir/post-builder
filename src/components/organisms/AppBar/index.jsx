@@ -19,7 +19,7 @@ function SimpleAppBar(props) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit">
-            Instagram post creator
+            Instagram post builder
           </Typography>
         </Toolbar>
       </AppBar>
