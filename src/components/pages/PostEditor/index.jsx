@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { Emojione, Twemoji } from 'react-emoji-render';
+import { Twemoji } from 'react-emoji-render';
 import { emojify } from 'react-emojione';
 import { Picker } from 'emoji-mart';
-import classNames from 'classnames';
-import AppBar from '../../organisms/AppBar';
-import 'emoji-mart/css/emoji-mart.css';
-import styles from './PostEditor.module.css';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -16,19 +12,21 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/FavoriteOutlined';
 import ShareIcon from '@material-ui/icons/ShareOutlined';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import instagramPost from './instagram.png';
 import FaceIcon from '@material-ui/icons/TagFaces';
 import CommentIcon from '@material-ui/icons/ModeCommentOutlined';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import red from '@material-ui/core/colors/red';
+import AppBar from '../../organisms/AppBar';
+import 'emoji-mart/css/emoji-mart.css';
+import instagramPost from './instagram.png';
 import postTemplates from './templates';
 
-const styles1 = theme => ({
+const styles = theme => ({
   root: {
     flexGrow: 1,
     justifyContent: 'center',
@@ -237,4 +235,4 @@ class PostEditor extends Component {
   }
 }
 
-export default withStyles(styles1)(PostEditor);
+export default withStyles(styles)(PostEditor);
