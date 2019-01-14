@@ -80,6 +80,9 @@ const styles = theme => ({
     fontWeight: '500',
     marginRight: '4px',
   },
+  emojiText: {
+    whiteSpace: 'pre-wrap',
+  },
 });
 
 class PostEditor extends Component {
@@ -210,7 +213,7 @@ class PostEditor extends Component {
                         <Typography className={classes.company} component="span" inline>
                           nautilustour
                         </Typography>
-                        <Twemoji svg className={styles.emojiText} text={this.state.text} />
+                        <Twemoji svg className={classes.emojiText} text={this.state.text} />
                       </Typography>
                     </CardContent>
                     <CardActions className={classes.actions} disableActionSpacing>
