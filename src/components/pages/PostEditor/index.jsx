@@ -26,6 +26,7 @@ import FaceIcon from '@material-ui/icons/TagFaces';
 import CommentIcon from '@material-ui/icons/ModeCommentOutlined';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import postTemplates from './templates';
 
 const styles1 = theme => ({
   root: {
@@ -34,6 +35,12 @@ const styles1 = theme => ({
   },
   button: {
     margin: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
+  },
+  templateButton: {
+    marginRight: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit * 4,
   },
@@ -103,7 +110,6 @@ class PostEditor extends Component {
   };
 
   handleClick = () => {
-    console.log(this.textareaRef.current);
     this.textareaRef.current.select();
     document.execCommand('copy');
     alert('Copy success');
@@ -115,6 +121,10 @@ class PostEditor extends Component {
 
   handleClickAway = () => {
     this.setState(prevState => ({ showPicker: false }));
+  };
+
+  handleTemplateClick = text => {
+    this.setState({ text });
   };
 
   // This ❤️ sentence includes :+1: a variety of emoji types :)
@@ -132,6 +142,17 @@ class PostEditor extends Component {
             <Grid item xs={12} sm={10}>
               <Grid container spacing={24} className={classes.container}>
                 <Grid item xs={12} sm={8}>
+                  {postTemplates.map((item, index) => (
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      className={classes.templateButton}
+                      onClick={() => this.handleTemplateClick(item)}
+                      key={index}
+                    >
+                      {`Template ${index + 1}`}
+                    </Button>
+                  ))}
                   <div className={classes.textFieldWrapper}>
                     <TextField
                       id="outlined-multiline-flexible"
