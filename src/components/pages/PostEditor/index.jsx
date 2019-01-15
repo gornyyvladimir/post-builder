@@ -39,8 +39,6 @@ const styles = theme => ({
   templateButton: {
     marginRight: theme.spacing.unit,
     marginBottom: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 4,
-    paddingRight: theme.spacing.unit * 4,
   },
   buttons: {
     display: 'flex',
@@ -110,7 +108,8 @@ class PostEditor extends Component {
     this.setState({ cursorPosition: event.target.selectionStart });
   };
 
-  handleClick = () => {
+  handleClick = (event) => {
+    window.a = {text: this.textareaRef.current.value};
     this.textareaRef.current.select();
     document.execCommand('copy');
     alert('Copy success');
