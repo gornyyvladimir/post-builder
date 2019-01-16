@@ -109,10 +109,12 @@ class PostEditor extends Component {
   };
 
   handleClick = (event) => {
-    window.a = {text: this.textareaRef.current.value};
-    this.textareaRef.current.select();
-    document.execCommand('copy');
-    alert('Copy success');
+    // window.a = {text: this.textareaRef.current.value};
+    const text = this.textareaRef.current.value.replace(/\n{2,}/g, '\n⠀\n');
+    prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    // this.textareaRef.current.select();
+    // document.execCommand('copy');
+    // alert('Copy success');
   };
 
   handleTogglePicker = () => {
