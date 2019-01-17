@@ -8,8 +8,8 @@ self.__precacheManifest = [
     "url": "/post-builder/static/js/runtime~main.6750c52a.js"
   },
   {
-    "revision": "e68383662893c09c2321",
-    "url": "/post-builder/static/js/main.e6838366.chunk.js"
+    "revision": "10afc4b0f494b0af2652",
+    "url": "/post-builder/static/js/main.10afc4b0.chunk.js"
   },
   {
     "revision": "945f84ce814204f1e20c",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/post-builder/static/css/1.24971114.chunk.css"
   },
   {
-    "revision": "dc8423d21b8aa0a1b5a17322e329a1c0",
+    "revision": "865894d7982056bc527ff7e4f00787be",
     "url": "/post-builder/index.html"
   }
 ];
