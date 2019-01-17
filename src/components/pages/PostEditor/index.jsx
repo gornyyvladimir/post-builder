@@ -108,10 +108,15 @@ class PostEditor extends Component {
     this.setState({ cursorPosition: event.target.selectionStart });
   };
 
-  handleClick = (event) => {
+  handleClick = event => {
     // window.a = {text: this.textareaRef.current.value};
     const text = this.textareaRef.current.value.replace(/\n{2,}/g, '\n⠀\n');
-    prompt("Copy to clipboard: Ctrl+C, Enter", text);
+    this.setState({ text }, () => {
+      this.textareaRef.current.select();
+      document.execCommand('copy');
+      alert('Copy success');
+    });
+    // prompt("Copy to clipboard: Ctrl+C, Enter", text);
     // this.textareaRef.current.select();
     // document.execCommand('copy');
     // alert('Copy success');
