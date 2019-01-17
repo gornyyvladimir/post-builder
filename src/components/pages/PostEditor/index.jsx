@@ -110,7 +110,9 @@ class PostEditor extends Component {
 
   handleClick = event => {
     // window.a = {text: this.textareaRef.current.value};
-    const text = this.textareaRef.current.value.replace(/\n{2,}/g, '\n⠀\n');
+    const rawText = this.textareaRef.current.value;
+    const text = rawText.replace(/\s*\n{2,}/g, '\n⠀\n').replace(/\s+\n/g, '\n');
+    // window.a = {text};
     this.setState({ text }, () => {
       this.textareaRef.current.select();
       document.execCommand('copy');
