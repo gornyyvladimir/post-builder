@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Twemoji } from 'react-emoji-render';
-import { emojify } from 'react-emojione';
 import { Picker } from 'emoji-mart';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -88,12 +87,15 @@ class PostEditor extends Component {
     text: '',
     cursorPosition: 0,
     showPicker: false,
+    error: false,
   };
 
   textareaRef = React.createRef();
 
   handleChange = event => {
-    this.setState({ text: emojify(event.target.value, { output: 'unicode' }) });
+    const text = event.target.value;
+    const error = text.length > 2000;
+    this.setState({ text, error });
   };
 
   addEmoji = emoji => {
@@ -116,7 +118,7 @@ class PostEditor extends Component {
     this.setState({ text }, () => {
       this.textareaRef.current.select();
       document.execCommand('copy');
-      alert('Copy success');
+      alert('Успешно скопировано');
     });
     // prompt("Copy to clipboard: Ctrl+C, Enter", text);
     // this.textareaRef.current.select();
@@ -133,7 +135,7 @@ class PostEditor extends Component {
   };
 
   handleTemplateClick = text => {
-    this.setState({ text });
+    this.setState({ text, error: false });
   };
 
   // This ❤️ sentence includes :+1: a variety of emoji types :)
@@ -159,13 +161,13 @@ class PostEditor extends Component {
                       onClick={() => this.handleTemplateClick(item)}
                       key={index}
                     >
-                      {`Template ${index + 1}`}
+                      {`Шаблон ${index + 1}`}
                     </Button>
                   ))}
                   <div className={classes.textFieldWrapper}>
                     <TextField
                       id="outlined-multiline-flexible"
-                      label="Description editor"
+                      label="Описание"
                       multiline
                       rows="22"
                       rowsMax="28"
@@ -175,8 +177,9 @@ class PostEditor extends Component {
                       onBlur={this.handleBlur}
                       inputRef={this.textareaRef}
                       margin="none"
-                      helperText={`${this.state.text.length} characters, max 2000`}
+                      helperText={`${this.state.text.length} символов, максимум 2000`}
                       variant="outlined"
+                      error={this.state.error}
                     />
                     <ClickAwayListener onClickAway={this.handleClickAway}>
                       <div>
@@ -192,7 +195,7 @@ class PostEditor extends Component {
                   </div>
                   <div className={classes.buttons}>
                     <Button variant="outlined" color="primary" className={classes.button} onClick={this.handleClick}>
-                      Copy
+                      Копировать
                     </Button>
                     <IconButton color="primary" aria-label="Emoji" onClick={this.handleTogglePicker}>
                       <FaceIcon />
