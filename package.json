@@ -1,6 +1,6 @@
 {
   "name": "post-builder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://gornyyvladimir.github.io/post-builder",
   "private": true,
   "dependencies": {
