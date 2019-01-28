@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Twemoji } from 'react-emoji-render';
 import { Picker } from 'emoji-mart';
 import { withStyles } from '@material-ui/core/styles';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -24,6 +27,7 @@ import AppBar from '../../organisms/AppBar';
 import 'emoji-mart/css/emoji-mart.css';
 import instagramPost from './instagram.png';
 import postTemplates from './templates';
+import ImageEditor from '../../organisms/ImageEditor';
 
 const styles = theme => ({
   root: {
@@ -149,6 +153,13 @@ class PostEditor extends Component {
           <AppBar />
         </header>
         <main>
+          <Dialog open={true} scroll={'body'}>
+            <DialogContent>
+              <div>
+                <ImageEditor />
+              </div>
+            </DialogContent>
+          </Dialog>
           <Grid className={classes.root} container>
             <Grid item xs={12} sm={10}>
               <Grid container spacing={24} className={classes.container}>
