@@ -3,7 +3,6 @@ import { Twemoji } from 'react-emoji-render';
 import { Picker } from 'emoji-mart';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
@@ -60,6 +59,7 @@ const styles = theme => ({
   media: {
     height: 0,
     paddingTop: '100%', // 1:1
+    cursor: 'pointer',
   },
   actions: {
     display: 'flex',
@@ -92,6 +92,8 @@ class PostEditor extends Component {
     cursorPosition: 0,
     showPicker: false,
     error: false,
+    open: false,
+    file: null,
   };
 
   textareaRef = React.createRef();
@@ -112,6 +114,18 @@ class PostEditor extends Component {
 
   handleBlur = event => {
     this.setState({ cursorPosition: event.target.selectionStart });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleImageClick = () => {
+    this.setState({ open: true });
+  };
+
+  handleFile = file => {
+    this.setState({ file });
   };
 
   handleClick = event => {
@@ -153,11 +167,9 @@ class PostEditor extends Component {
           <AppBar />
         </header>
         <main>
-          <Dialog open={true} scroll={'body'}>
+          <Dialog open={this.state.open} scroll={'body'} onClose={this.handleClose}>
             <DialogContent>
-              <div>
-                <ImageEditor />
-              </div>
+              <ImageEditor onClose={this.handleClose} handleFile={this.handleFile}/>
             </DialogContent>
           </Dialog>
           <Grid className={classes.root} container>
@@ -229,7 +241,12 @@ class PostEditor extends Component {
                       title="nautilustour"
                       subheader="Kazan, Tatarstan"
                     />
-                    <CardMedia className={classes.media} image={instagramPost} title="Instagram post" />
+                    <CardMedia
+                      className={classes.media}
+                      image={this.state.file || instagramPost}
+                      title="Instagram post"
+                      onClick={this.handleImageClick}
+                    />
                     <CardContent>
                       <Typography component="div">
                         <Typography className={classes.company} component="span" inline>

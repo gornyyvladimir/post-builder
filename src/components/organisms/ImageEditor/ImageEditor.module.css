@@ -2,7 +2,6 @@
   position: relative;
   width: 540px;
   height: 540px;
-  align-self: center;
 }
 
 .imageWrapper {
@@ -92,4 +91,19 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+  padding: 6px;
+}
+
+.itemWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
