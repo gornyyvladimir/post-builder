@@ -49,7 +49,7 @@ class ImageEditor extends Component {
   render() {
     const { vertical, horizontal, file, width, height, scale } = this.state;
     return (
-      <div>
+      <div className={styles.wrapper}>
         <div style={{ width: width, height: height }} className={styles.capture} id="capture" ref={this.captureRef}>
           <div className={styles.imageWrapper} id="image">
             <div
@@ -81,26 +81,24 @@ class ImageEditor extends Component {
           </div>
         </div>
         <input type="file" onChange={this.handleUpload} />
-        <label>
-          Vertical
-          <input
-            value={vertical}
-            type="range"
-            min="0"
-            max="100"
-            onChange={event => this.handleChange(event.target.value, 'vertical')}
-          />
-        </label>
-        <label>
-          Horizontal
-          <input
-            value={horizontal}
-            type="range"
-            min="0"
-            max="100"
-            onChange={event => this.handleChange(event.target.value, 'horizontal')}
-          />
-        </label>
+        <label htmlFor="vertival">Vertical</label>
+        <input
+          value={vertical}
+          type="range"
+          min="0"
+          max="100"
+          id="vertical"
+          onChange={event => this.handleChange(event.target.value, 'vertical')}
+        />
+        <label htmlFor="horizontal">Horizontal</label>
+        <input
+          value={horizontal}
+          type="range"
+          min="0"
+          max="100"
+          id="horizontal"
+          onChange={event => this.handleChange(event.target.value, 'horizontal')}
+        />
         <button type="button" onClick={this.handleClick}>
           Capture
         </button>

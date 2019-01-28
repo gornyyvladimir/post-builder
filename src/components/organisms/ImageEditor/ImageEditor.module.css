@@ -2,6 +2,7 @@
   position: relative;
   width: 540px;
   height: 540px;
+  align-self: center;
 }
 
 .imageWrapper {
@@ -86,4 +87,9 @@
   margin: 0;
   font-size: 32px;
   font-family: 'Ossem Rounded';
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
